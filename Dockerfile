@@ -22,6 +22,8 @@ RUN apt-get update  && \
         
 RUN apt-get install -y tor proxychains privoxy
 ADD torrc /etc/tor/torrc
+ADD proxychains.conf /etc/
+RUN echo "forward-socks5 / 127.0.0.1:9050 ." >> /etc/privoxy/config
 
 EXPOSE 3128/tcp 8080/tcp
 
