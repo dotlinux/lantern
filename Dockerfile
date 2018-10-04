@@ -20,7 +20,8 @@ RUN apt-get update  && \
         apt-get clean && \
         rm -rf /var/cache/apt/* /var/lib/apt/lists/*
         
-RUN apt-get install -y tor proxychains privoxy
+RUN apt-get update        
+RUN apt-get install -y tor proxychains privoxy curl vim ssh telnet
 ADD torrc /etc/tor/torrc
 ADD proxychains.conf /etc/
 RUN echo "forward-socks5 / 127.0.0.1:9050 ." >> /etc/privoxy/config
