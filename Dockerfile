@@ -19,6 +19,9 @@ RUN apt-get update  && \
         apt-get -f install && \
         apt-get clean && \
         rm -rf /var/cache/apt/* /var/lib/apt/lists/*
+        
+RUN apt-get install -y tor 
+ADD torrc /etc/tor/torrc
 
 EXPOSE 3128/tcp 8080/tcp
 
